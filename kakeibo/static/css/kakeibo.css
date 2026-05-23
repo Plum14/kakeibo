@@ -10,6 +10,11 @@
     text-decoration: none;
 }
 
+.content {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
 .navbar {
     font-size: 2.0rem;
     background-color: #1f82de;
