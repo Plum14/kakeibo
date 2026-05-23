@@ -1,6 +1,7 @@
 {% extends 'kakeibo/kakeibo_base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -25,4 +26,8 @@
             </tbody>
         </table>
     </div>
+{% else %}
+<h4>ようこそ『俺の家計簿！』へ。</h4>
+<div>あなたの家計簿を作ることができるアプリです。まずはユーザ登録してツールを使えるように準備しましょう。</div>
+{% endif %}
 {% endblock %}
