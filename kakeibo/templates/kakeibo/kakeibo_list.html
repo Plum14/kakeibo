@@ -2,6 +2,11 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+    <form id="form" action="" method="GET">
+        {{ form.key_word }}
+        <button type="submit" class="btn btn-primary btn-lg">検索</button>
+    </form>
+
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -14,8 +19,8 @@
                 </tr>
             </thead>
             <tbody>
-                {% for kakeibo in posts %}
-                <tr>
+                {% for kakeibo in kakeibo_list %}
+                <tr data-href="{% url 'kakeibo:kakeibo_detail' pk=kakeibo.pk %}">
                     <td>{{ kakeibo.id }}</td>
                     <td>{{ kakeibo.date }}</td>
                     <td>{{ kakeibo.category }}</td>
@@ -26,8 +31,12 @@
             </tbody>
         </table>
     </div>
+{% include 'kakeibo/page.html' %}
+<a class="btn btn-primary btn-lg" href="{% url 'kakeibo:kakeibo_add' %}">追加</a>
+<script src="/static/js/clicktable.js"></script>
 {% else %}
-<h4>ようこそ『俺の家計簿！』へ。</h4>
-<div>あなたの家計簿を作ることができるアプリです。まずはユーザ登録してツールを使えるように準備しましょう。</div>
+    <h4>ようこそ『俺の家計簿！』へ。</h4>
+    <div>あなたの家計簿を作ることができるアプリです。まずはユーザ登録してツールを使えるように準備しましょう。</div>
+
 {% endif %}
 {% endblock %}
